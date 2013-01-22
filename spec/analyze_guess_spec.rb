@@ -1,16 +1,18 @@
 require './lib/analyze_guess'
 
 	describe AnalyzeGuess do
+	
 		describe '#response' do
+	
 	    before  { subject.response }
-    
-      it 'returns ["b","b","b","b","b"] when the guess matches the code' do
-        subject.response.should == ["b","b","b","b","b"]
-      end
 
-      it 'returns ["","","","",""] when the no symbols in the guess match the code' do
-        subject.response.should == ["","","","",""]
-      end
+      let(:code) { ["g","g","g","g","g"] }
+    	let(:guess) { ["g","g","g","g","g"] }    
+    	its(:response) { should == ["b","b","b","b","b"] }
+
+      let(:code) { ["r","r","r","r","r"] }
+    	let(:guess) { ["g","g","g","g","g"] }
+    	its(:response) { should == ["","","","",""] }
 
 		end
 	end
