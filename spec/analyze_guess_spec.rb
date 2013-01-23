@@ -25,5 +25,11 @@ require './lib/analyze_guess'
 	    	its(:response) 	{ should == ["w","w","w","w","w"] }
 	    end
 
+	    context 'when the symbol in the guess == the same positioned symbol in the code' do
+	      let(:code) 			{ ["g","y","y","y","y"] }
+	    	let(:guess) 		{ ["g","r","r","r","r"] }    
+	    	its(:response) 	{ should == ["b","","","",""] }
+	    end
+
 		end
 	end

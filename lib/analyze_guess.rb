@@ -1,5 +1,5 @@
 class AnalyzeGuess
-	
+
 	attr_accessor :guess, :code
 
 	def initialize(code, guess)
@@ -8,13 +8,17 @@ class AnalyzeGuess
 	end
 
 	def response
-		if @guess == @code
-			["b","b","b","b","b"]
-		elsif (@guess - @code) != []
-			["","","","",""]
-		elsif (@guess - @code) == []
-			["w","w","w","w","w"]
+		@response = []
+		for i in 0..guess.length - 1
+			if @guess[i] == @code[i]
+				@response << "b"
+			elsif (@guess - @code) != []
+				@response << ""
+			else
+				@response << "w"
+			end
 		end
+		@response
 	end
 
 end
