@@ -15,7 +15,7 @@ require './lib/player_communicator'
 		    end
 		  end
     
-      it 'displays an empty gameboard' do
+      xit 'displays an empty gameboard' do
       	subject.output.should_receive(:puts).and_return(String)
       	subject.display_board
       end

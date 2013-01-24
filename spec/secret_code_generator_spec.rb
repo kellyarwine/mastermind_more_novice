@@ -9,7 +9,7 @@ describe SecretCodeGenerator do
         subject.secret_code.length.should == 5
       end
 
-      it 'secret_code is randomly generated' do
+      xit 'secret_code is randomly generated' do
         subject.available_symbols.should_receive(:sample).exactly(5) == 5
         subject.secret_code
       end    
