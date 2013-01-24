@@ -17,13 +17,13 @@ require './lib/player_communicator'
       it 'displays an empty gameboard' do
       	subject.output.should_receive(:puts).and_return(String)
       	subject.display_board
+				subject.board_plays.should_not == ""
       end
 
-			# xit 'displays guess on gameboard after turn' do
-   #    	subject.input.stub!(:gets) { "rrrrr\n" }
-   #    	subject.output.should_receive(:puts).and_return(String)
-   #    	subject.display_board
-   #    end      
+			it 'displays guess on gameboard after turn' do
+      	subject.input.stub!(:gets) { "rrrrr\n" }
+      	subject.board_plays.should_not == ""
+      end      
 
       #displays >1 guesses and feedbacks
       #need to test displaying losing message
