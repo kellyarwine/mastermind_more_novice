@@ -14,7 +14,7 @@ class AnalyzeGuess
 				@response << "b"
 				code_symbol_index = @code.index(@guess[i])
 				code[code_symbol_index] = "X"
-			elsif (@guess[i].split(//) - @code) == []
+			elsif ([@guess[i]] - @code) == []
 				@response << "w"
 				code_symbol_index = @code.index(@guess[i])
 				code[code_symbol_index] = "X"

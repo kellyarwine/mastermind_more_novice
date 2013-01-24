@@ -8,7 +8,7 @@ require './lib/analyze_guess'
 
       context 'when guess has all matched symbols' do
 	      let(:code) 			{ ["g","g","g","g","g"] }
-	    	let(:guess) 		{ ["g","g","g","g","g"] }    
+	    	let(:guess) 		{ ["g","g","g","g","g"] } 
 	    	its(:response) 	{ should == ["b","b","b","b","b"] }
     	end
 

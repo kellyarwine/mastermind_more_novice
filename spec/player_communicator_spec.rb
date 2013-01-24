@@ -2,18 +2,28 @@ require './lib/player_communicator'
 
 	describe PlayerCommunicator do
 		describe '#display_board' do
-	    
-	    before  { subject.display_board }
+			let(:subject) 		{ PlayerCommunicator.new(feedback, turn_number, total_turns) }
+	    let(:guess) 			{ ["b","b","b","b","b"] }
+	    let(:feedback) 		{ ["w","w","w","w","w"] }
+	    let(:turn_number) { 0 }
+	    let(:total_turns) { 12 }
+
+		  context "input" do
+		    it "prompts for guess" do
+		      subject.input.stub!(:gets) { "rrrrr\n" }
+		      subject.guess.should == "rrrrr"
+		    end
+		  end
     
-      it 'displays the board' do
-        subject.display_board.should == 1000000
+      it 'displays an empty gameboard' do
+      	subject.output.should_receive(:puts).and_return(String)
+      	subject.display_board
       end
 
-      context 'when a guess does not match the secret code, the player should be prompted for a new guess (when there are turns remaining)' do
-    	end
+      #displays >1 guesses and feedbacks
+      #need to test displaying losing message
+      #need to test displaying winning message
 
-    	context 'when a guess does not match the secret code, the response should be displayed' do
-    	end
 
 		end
 	end
