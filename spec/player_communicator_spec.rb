@@ -2,7 +2,7 @@ require './lib/player_communicator'
 
 	describe PlayerCommunicator do
 		describe '#display_board' do
-			let(:subject) 		{ PlayerCommunicator.new(feedback, turn_number, total_turns) }
+			let(:subject) 		{ PlayerCommunicator.new(turn_number, total_turns) }
 	    let(:guess) 			{ ["b","b","b","b","b"] }
 	    let(:feedback) 		{ ["w","w","w","w","w"] }
 	    let(:turn_number) { 0 }
@@ -11,11 +11,12 @@ require './lib/player_communicator'
 		  context "input" do
 		    it "prompts for guess" do
 		      subject.input.stub!(:gets) { "rrrrr\n" }
-		      subject.guess.should == "rrrrr"
+		      subject.guess.should == ["r","r","r","r","r"]
 		    end
 		  end
     
-      xit 'displays an empty gameboard' do
+      it 'displays an empty gameboard' do
+      	subject.input.stub!(:gets) { "rrrrr\n" }
       	subject.output.should_receive(:puts).and_return(String)
       	subject.display_board
       end

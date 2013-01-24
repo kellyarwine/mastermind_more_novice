@@ -1,7 +1,7 @@
 class PlayerCommunicator
 	attr_accessor :guess, :feedback, :turn_number, :total_turns, :board_plays
 
-	def initialize(feedback, turn_number, total_turns)
+	def initialize(turn_number, total_turns)
 		@feedback = feedback
 		@turn_number = turn_number
 		@total_turns = total_turns
@@ -29,7 +29,6 @@ class PlayerCommunicator
 		board = ""
 		board << board_header
 		board << board_plays
-		board << board_remaining_turns
 		board << board_footer
 	end
 
@@ -43,30 +42,23 @@ class PlayerCommunicator
 		board_header <<	"           |_____________|_____________|\n"
 		board_header
 	end
-	
+
 	def board_plays
-		@board_plays << "Turn ##{turn_number}:   |  "
-		guess.each { |symbol| @board_plays << symbol + " " }
-		@board_plays << " |  "
-		@feedback.each { |symbol| @board_plays << symbol + " " }
-		@board_plays << " |\n"
+		for i in 1..total_turns
+			if i <= 9
+				@board_plays << "Turn ##{i}:   |            "
+			elsif i <= 99
+				@board_plays << "Turn ##{i}:  |            "
+			else
+				@board_plays << "Turn ##{i}: |            "
+			end
+			@board_plays << " |            "
+			@board_plays << " |\n"
+			@board_plays
+		end
 		@board_plays
 	end
-
-	def board_remaining_turns
-		board_remaining_turns = ""
-		for i in total_turns-turn_number..total_turns
-			if i <= 9
-				board_remaining_turns << "Turn ##{i}:   |             |             |\n"
-			elsif i <= 99
-				board_remaining_turns << "Turn ##{i}:  |             |             |\n"
-			else
-				board_remaining_turns << "Turn ##{i}: |             |             |\n"
-			end	
-		end
-		board_remaining_turns
-	end
-
+	
 	def board_footer
 		board_footer = ""
 		board_footer << "           |_____________|_____________|\n"
@@ -76,5 +68,5 @@ class PlayerCommunicator
 
 end
 
-# p = PlayerCommunicator.new(["g","g","g","g","g"], ["w","w","w","w","w"], 2, 120)
-# p.display_board
+p = PlayerCommunicator.new(2, 12)
+p.display_board
