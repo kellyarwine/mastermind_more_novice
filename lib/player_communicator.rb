@@ -68,5 +68,5 @@ class PlayerCommunicator
 
 end
 
-p = PlayerCommunicator.new(2, 12)
-p.display_board
+# p = PlayerCommunicator.new(2, 12)
+# p.display_board
